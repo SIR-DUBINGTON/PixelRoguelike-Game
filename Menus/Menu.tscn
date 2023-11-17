@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Menus/Menu.gd" type="Script" id=1]
+[ext_resource path="res://Silkscreen-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Menus/title screen.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 2 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = -44.5
+margin_right = 45.0
+margin_bottom = 44.5
+
+[node name="startButton" type="Button" parent="VBoxContainer"]
+margin_right = 90.0
+margin_bottom = 27.0
+focus_neighbour_top = NodePath("../quitButton")
+custom_fonts/font = SubResource( 1 )
+text = "Start"
+
+[node name="optionsButton" type="Button" parent="VBoxContainer"]
+margin_top = 31.0
+margin_right = 90.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 2 )
+text = "Options"
+
+[node name="quitButton" type="Button" parent="VBoxContainer"]
+margin_top = 62.0
+margin_right = 90.0
+margin_bottom = 89.0
+focus_neighbour_bottom = NodePath("../startButton")
+custom_fonts/font = SubResource( 3 )
+text = "Quit"
+
+[node name="Sprite" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 160, 90 )
+texture = ExtResource( 3 )
+
+[connection signal="pressed" from="VBoxContainer/startButton" to="." method="_on_startButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/optionsButton" to="." method="_on_optionsButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/quitButton" to="." method="_on_quitButton_pressed"]
